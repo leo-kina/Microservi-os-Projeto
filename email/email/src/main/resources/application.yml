@@ -1,10 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5431/ms_email_ms
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://localhost:5433/ms-user-ms
+    username: postgres-user
+    password: postgres-password
     driver-class-name: org.postgresql.Driver
-
 
   jpa:
     hibernate:
@@ -14,5 +13,11 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  flyway:
-    port: 8080
+  rabbitmq:
+    addresses: amqps://qtnittkk:YAy2EkzANWV_Hgi0zJR2g7h75v5F6B2B@campbell.lmq.cloudamqp.com/qtnittkk
+    username: qtnittkk
+    password: YAy2EkzANWV_Hgi0zJR2g7h75v5F6B2B
+    virtual-host: qtnittkk
+
+server:
+  port: 8080
