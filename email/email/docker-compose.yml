@@ -2,10 +2,10 @@ version: '3.8'
 services:
   postgres:
     image: postgres:latest
-    container_name: ms-user-db
+    container_name: ms-email-db
     environment:
-      POSTGRES_DB: ms-user-ms
-      POSTGRES_USER: postgres-user
+      POSTGRES_DB: ms-email-ms
+      POSTGRES_USER: postgres-email
       POSTGRES_PASSWORD: postgres-password
     ports:
       - "5433:5432"

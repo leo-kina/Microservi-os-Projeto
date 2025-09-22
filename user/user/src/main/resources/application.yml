@@ -3,11 +3,10 @@ spring:
     name: user
 
   datasource:
-    url: jdbc:postgresql://localhost:5431/ms-user-ms
+    url: jdbc:postgresql://localhost:5435/ms-user-ms
     username: postgres-user
     password: postgres-password
     driver-class-name: org.postgresql.Driver
-
 
   jpa:
     hibernate:
@@ -16,6 +15,5 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
-  flyway:
-    port: 8081
+server:
+  port: 8081
