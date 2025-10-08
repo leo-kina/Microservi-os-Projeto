@@ -1,6 +1,7 @@
 package dev.java10x.user.service;
 
 import dev.java10x.user.domain.UserModel;
+import dev.java10x.user.producer.UserProduce;
 import dev.java10x.user.respository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +11,18 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     private final UserRepository userRepository;
+    private final UserProduce userProduce;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserProduce userProduce) {
         this.userRepository = userRepository;
+        this.userProduce = userProduce;
     }
 
-    public UserModel save(UserModel userModel){
-        //salvando o usuario no banco de dados
-        return userModel = userRepository.save(userModel);
-        //disparando evento   //disparando evento
+    @Transactional
+    public UserModel saveAndPublish(UserModel userModel){
+        userModel = userRepository.save(userModel);
+        userProduce.publishEvent(userModel);
+        return userModel;
+
     }
 }
